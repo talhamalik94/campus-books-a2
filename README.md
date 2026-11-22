@@ -1,16 +1,36 @@
-# React + Vite
+# Campus Books
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A fictional bookstore built for Web Programming Assignment 02.
 
-Currently, two official plugins are available:
+## Student
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Name: Talha Malik
+- Roll number: 24I-2066
 
-## React Compiler
+## Business profile
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Audience: university students.
+- Offering: printed books and original PDF learning guides.
+- Operating area: printed-book delivery in Islamabad and Rawalpindi.
+- Main customer task: browse books, compare options, create a cart and complete checkout.
+- Business goal: help customers complete an informed book selection.
 
-## Expanding the Oxlint configuration
+## Planned operating rules
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+1. Customers can order one to five copies per title, subject to stock.
+2. PDF orders require confirmation that the customer can open PDF files.
+3. Printed delivery costs Rs. 200 below a printed subtotal of Rs. 3,000.
+   Delivery is free at Rs. 3,000 or above.
+   PDF-only orders have no delivery charge.
+
+## Development
+
+npm install
+npm run dev
+npm run build
+
+## Scope
+
+This is a frontend assignment.
+Orders, stock, delivery and digital fulfilment are simulated.
+No real payment is collected.
