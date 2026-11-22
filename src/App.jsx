@@ -188,6 +188,48 @@ export default function App() {
       };
     });
 
+    const updatedBooks = books.map((book) => {
+      const purchased = cart.find((item) => item.id === book.id);
+
+      if (!purchased) return book;
+
+      return {
+        ...book,
+        stock: book.stock - purchased.quantity
+      };
+    });
+
+    let stockSaved = true;
+
+    try {
+      const raw = localStorage.getItem("campus-books-stock-v1");
+      let savedStock = {};
+
+      try {
+        const parsed = raw ? JSON.parse(raw) : {};
+
+        if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
+          savedStock = parsed;
+        }
+      } catch {
+        savedStock = {};
+      }
+
+      cart.forEach((item) => {
+        const book = updatedBooks.find((book) => book.id === item.id);
+        savedStock[item.id] = book.stock;
+      });
+
+      localStorage.setItem(
+        "campus-books-stock-v1",
+        JSON.stringify(savedStock)
+      );
+    } catch {
+      stockSaved = false;
+    }
+
+    setBooks(updatedBooks);
+
     setOrder({
       id: `DEMO-${Date.now()}`,
       items,
@@ -205,7 +247,11 @@ export default function App() {
       pdfReady: false
     });
 
-    setMessage("Simulated order completed.");
+    setMessage(
+      stockSaved
+        ? "Simulated order completed. Book availability has been updated."
+        : "Simulated order completed. Stock changed for this session, but your browser could not save it."
+    );
 
     return true;
   }
