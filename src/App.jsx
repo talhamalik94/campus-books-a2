@@ -1,21 +1,35 @@
+import { Link, Route, Routes } from "react-router-dom";
 import { books } from "./data/books";
+import Catalog from "./pages/Catalog";
+import Details from "./pages/Details";
+import About from "./pages/About";
 
 export default function App() {
   return (
-    <main>
-      <h1>Campus Books</h1>
-      <p>A fictional bookstore for students in Islamabad and Rawalpindi.</p>
-      <p>All orders are simulated.</p>
+    <>
+      <header>
+        <nav aria-label="Main navigation">
+          <Link to="/">Books</Link>{" "}
+          <Link to="/about">About</Link>
+        </nav>
+      </header>
 
-      <h2>Our books</h2>
-
-      <ul>
-        {books.map((book) => (
-          <li key={book.id}>
-            {book.title} — {book.format} — Rs. {book.price}
-          </li>
-        ))}
-      </ul>
-    </main>
+      <main>
+        <Routes>
+          <Route path="/" element={<Catalog books={books} />} />
+          <Route path="/books/:id" element={<Details books={books} />} />
+          <Route path="/about" element={<About />} />
+          <Route
+            path="*"
+            element={
+              <section>
+                <h1>Page not found</h1>
+                <Link to="/">Browse books</Link>
+              </section>
+            }
+          />
+        </Routes>
+      </main>
+    </>
   );
 }
